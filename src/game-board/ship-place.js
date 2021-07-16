@@ -31,9 +31,10 @@ function putShip(start,length,direction,grid,color){
     else{
         while(total>0){
             grid[curr].style.backgroundColor=color;
+            cells.push([Math.floor(curr/10)+1,(curr%10)+1]);
             total+=-1;
             curr+=10;
-            cells.push([Math.floor(curr/10)+1,(curr%10)+1]);
+            
             
 
         }

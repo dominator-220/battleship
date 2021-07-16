@@ -1,5 +1,5 @@
 
-import createGameboard from './game-board/grid-place';
+import {createGameboard} from './game-board/grid-place';
 import placeShip from'./game-board/ship-place';
 import ship from './ship/ships';
 import Createship from './ship/createship';
