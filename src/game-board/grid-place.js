@@ -1,7 +1,9 @@
 import Createship from "../ship/createship";
 import ship from "../ship/ships";
 import placeShip from "../game-board/ship-place";
-import createComputerboard from "../game-board/computer-grid";
+import {createComputerboard} from "../game-board/computer-grid";
+import userguess from "../game-board/userguess";
+import compguess from'./compguess';
 
 let arr=[["Carrier",5,"orange"],["Battleship",4,"red"],["Cruiser",3,"Blue"],["Submarine",3,"green"],["Destroyer",2,"pink"]];
 
@@ -30,7 +32,8 @@ function value(){
     }
     else{
         let length=usership.length;
-        let direction=parseInt(prompt("Enter direction"));
+        //let direction=parseInt(prompt("Enter direction"));
+        let direction=1;
      
         let cells= placeShip(this.value,arr[length][1],direction,userGrid.children,arr[length][2]);
     
@@ -44,6 +47,8 @@ function value(){
             for (let child=0;child<userGrid.children.length;child++){
                 userGrid.children[child].removeEventListener('click',value);
             }
+            userguess();
+            compguess();
 
             
         }
@@ -56,4 +61,4 @@ function value(){
     
     
 }
-export default createGameboard;
+export {createGameboard,usership,userGrid};

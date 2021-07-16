@@ -3,7 +3,7 @@ function Createship(){
     this.ships=[];
     this.lost=()=>{
         for(let i=0;i<5;i++){
-            if ((this.ships[i].Sunk)==0){
+            if ((this.ships[i].Sunk())==0){
             return 0;
             }
 

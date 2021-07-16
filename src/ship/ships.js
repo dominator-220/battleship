@@ -12,17 +12,20 @@ function ship(type,length,cells,color){
 
     }
     this.belongs=(pos)=>{
-        if (this.cells.indexOf(pos)!=-1){
-            return 1
+        console.log(pos,this.cells);
+        for(let i=0;i<this.length;i++){
+            if(pos[0]==this.cells[i][0] & (pos[1]==this.cells[i][1])){
+                return i;
+            }
         }
-        else{
-            return 0
-        }
+        
+        return -1;
+        
     }
 
     this.delete=(pos)=>{
-        ind=this.cells.indexOf(pos);
-        this.cells.splice(ind,1);
+        this.cells.splice(pos,1);
+        this.length+=-1;
 
 
     }

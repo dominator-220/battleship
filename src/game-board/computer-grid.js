@@ -1,6 +1,6 @@
 import Createship from "../ship/createship";
-import ship from "../ship/ships"
-import placeShip from "../game-board/ship-place"
+import ship from "../ship/ships";
+import placeShip from "../game-board/ship-place";
 
 let arr=[["Carrier",5,"orange"],["Battleship",4,"red"],["Cruiser",3,"Blue"],["Submarine",3,"green"],["Destroyer",2,"pink"]];
 
@@ -37,10 +37,13 @@ function fillValues(){
     }
     for (let child=0;child<compGrid.children.length;child++){
         compGrid.children[child].style.backgroundColor="grey";
+        
     }
 
   
     
     
 }
-export default createComputerboard;
+
+
+export {createComputerboard,compship,compGrid};
