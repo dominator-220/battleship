@@ -1,4 +1,4 @@
-function Usership(){
+function Createship(){
     this.length=0;
     this.ships=[];
     this.lost=()=>{
@@ -21,4 +21,4 @@ function Usership(){
     }
 }
 
-export default Usership;
+export default Createship;

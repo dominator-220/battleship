@@ -2,7 +2,7 @@
 import createGameboard from './game-board/grid-place';
 import placeShip from'./game-board/ship-place';
 import ship from './ship/ships';
-import Usership from './ship/usership';
+import Createship from './ship/createship';
 
 createGameboard();
 //placeShip([1,1],5,0,game.children,"Battleship","orange");
