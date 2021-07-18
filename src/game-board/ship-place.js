@@ -2,7 +2,7 @@
 let placeShip=(start,length,direction,grid,color)=>
 {   
     if (check(start,length,direction,grid)){
-        console.log(1);
+    
         let cells=putShip(start,length,direction,grid,color)
         return cells
         

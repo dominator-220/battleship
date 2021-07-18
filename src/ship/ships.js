@@ -2,6 +2,7 @@ function ship(type,length,cells,color){
     this.type=type;
     this.length=length;
     this.cells=cells;
+    this.grids=cells;
     this.color=color;
     this.Sunk=()=>{
         if (this.length==0){
@@ -12,7 +13,7 @@ function ship(type,length,cells,color){
 
     }
     this.belongs=(pos)=>{
-        console.log(pos,this.cells);
+      
         for(let i=0;i<this.length;i++){
             if(pos[0]==this.cells[i][0] & (pos[1]==this.cells[i][1])){
                 return i;

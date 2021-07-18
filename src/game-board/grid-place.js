@@ -3,7 +3,7 @@ import ship from "../ship/ships";
 import placeShip from "../game-board/ship-place";
 import {createComputerboard} from "../game-board/computer-grid";
 import userguess from "../game-board/userguess";
-import compguess from'./compguess';
+import {compguess} from'./compguess';
 
 let arr=[["Carrier",5,"orange"],["Battleship",4,"red"],["Cruiser",3,"Blue"],["Submarine",3,"green"],["Destroyer",2,"pink"]];
 
@@ -16,21 +16,22 @@ const createGameboard=()=>{
                 let newChild=document.createElement('div');
                 
                 newChild.value=[i+1,j+1];
-                newChild.addEventListener('click',value);
+                newChild.addEventListener('click',place);
                 userGrid.appendChild(newChild);
             }
         }
     }
 
-function value(){
+function place(){
     
-    
+
   
     if (usership.full()){
         createComputerboard();
         
     }
     else{
+       
         let length=usership.length;
         //let direction=parseInt(prompt("Enter direction"));
         let direction=1;
@@ -45,7 +46,7 @@ function value(){
         if (usership.full()){
             createComputerboard();
             for (let child=0;child<userGrid.children.length;child++){
-                userGrid.children[child].removeEventListener('click',value);
+                userGrid.children[child].removeEventListener('click',place);
             }
             userguess();
             compguess();
