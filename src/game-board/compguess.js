@@ -24,8 +24,13 @@ let find=()=>{
     let len=stack.length;
     let add=0;
     console.log(stack,stack.length,len);
- 
-   
+    if (len==0){
+        if (canbe.length!=0){
+            stack=[canbe[canbe.length-1]]
+            canbe.pop();
+        }
+    }
+    len=stack.length;
     if (len==0){
         let ind=Math.floor(Math.random()*(poss.length));
         curr=userGrid.children[poss[ind]];
@@ -111,7 +116,27 @@ let find=()=>{
          
         }
     }
+    if (add==0){
+        canbe=[];
+        for(let j=0;j<stack.length;j++){
+            canbe.push(stack[j]);
+        }
+        stack=[canbe[canbe.length-1]];
+        canbe.pop();
+        for(let d=0;d<4;d++){
+            let cellx=stack[0][0]+dir[d][0];
+            let celly=stack[0][1]+dir[d][1];
+            let ind=map[[Math.max(1,Math.min(10,cellx)),Math.max(1,Math.min(10,celly))]];
+            if (vis[ind]==0){
+                curr=userGrid.children[[ind]];
+                stack.push(curr.value);
+                add=1;
+                break
 
+            }
+        }
+
+    }
  
     check(curr);
 
@@ -136,7 +161,9 @@ function check(Child){
                 if (usership.ships[i].length==0){
                     for(let j=0;j<stack.length;j++){
                         let temp=poss.indexOf(map[stack[j]]);
+                        if (temp!=-1){
                         poss.splice(temp,1);
+                        }
 
                     }
                     stack=[];
