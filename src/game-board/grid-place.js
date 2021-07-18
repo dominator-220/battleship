@@ -34,7 +34,7 @@ function place(){
        
         let length=usership.length;
         //let direction=parseInt(prompt("Enter direction"));
-        let direction=1;
+        let direction=0;
      
         let cells= placeShip(this.value,arr[length][1],direction,userGrid.children,arr[length][2]);
     
