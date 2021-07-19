@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+html{
+    font-family: 'Shrikhand',cursive;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    background:url(images/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.parent{
+position:relative;
+margin-left:15rem;
+margin-top: 6rem;
+
+
+
+display:grid;
+position:relative;
+grid-template-columns: repeat(10,60px);
+grid-template-rows: repeat(10,60px);
+background:black;
+
+height:600px;
+width:600px;
+grid-gap: 0px;
+border: 2px solid green;
+
+
+
+}
+.parent>div{
+
+
+    color:black;
+    background-color: grey;
+    
+    height: 60px;
+    outline:2px solid black;
+    width: 60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:20px;
+    outline:2px solid black;
+
+}
+.parent>div:hover{
+    cursor:pointer;
+
+
+
+}
+.computer{
+        position:relative;
+        margin:0 auto;
+        margin-top: -37.5rem;
+        margin-left:75rem;
+        
+
+
+        display:grid;
+        position:relative;
+        grid-template-columns: repeat(10,60px);
+        grid-template-rows: repeat(10,60px);
+        background:black;
+        
+        height:600px;
+        width:600px;
+        grid-gap: 0px;
+        border: 2px solid black;
+    
+
+
+    }
+.computer>div{
+
+
+    color:black;
+    background-color: grey;
+    outline:2px solid black;
+    height: 60px;
+   
+    width: 60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:20px;
+
+}
+.computer>div:hover{
+    cursor:pointer;
+
+
+
+}
+#direction{
+    height: 50px;
+    width: 200px;
+    color:black;
+    position:absolute;
+    left:58rem;
+    top: 33rem;
+    font-size: 30px;
+    font-family: 'Shrikhand',cursive;
+    background: linear-gradient(54.7deg,  #f114cd 12%,#db3005 100%);
+
+}
+#result{
+    height:70px;
+    width:67%;
+    margin-left:20rem;
+    margin-top:1rem;
+    font-size: 40px;
+    font-family: 'Akaya Kanadaka';
+    color: white;
+   
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(54.7deg,  #1b1a1a 36%,#464746 100%);
+
+    
+}
+#name{
+    font-size:80px;
+    margin-left:45rem;
+}
+.imgstyle{
+    position:absolute;
+    height:60px;
+    width:60px;
+    outline:2px solid black;
+    
+    z-index: 1;
+}
+.answer{
+    position:absolute;
+    height: 40px;
+    width: 40px;
+    z-index: 2;
+}
+.Reload{
+    height: 60px;
+    width: 200px;
+    position:absolute;
+    top:2rem;
+    left:2rem;
+    display:none;
+    font-size:30px;
+    font-family: 'Shrikhand',cursive;
+    background: linear-gradient(54.7deg,  #14f114 12%,#f3ef10 100%);
+    border-radius:7%;
+    
+}
+.Reload:hover{
+    cursor:pointer;
+    transform:scale(1.1);
+
+    
+}
+.infouser,.infopp{
+    position:relative;
+    font-size:40px;
+    top:-42rem;
+    left:25rem;
+}
+.infopp{
+    left:85.5rem;
+    top:-45rem;
+    
+}
