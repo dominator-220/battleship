@@ -5,8 +5,22 @@ let map={};
 let vis={};
 let dir=[[1,0],[-1,0],[0,1],[0,-1]];
 let canbe=[];
+let result=document.querySelector('#result');
+let playAgain=document.querySelector('#reload');
 
 
+function playmiss() {
+    let audio = document.getElementById("miss");
+    audio.play();
+}
+function playhit() {
+    let audio = document.getElementById("hit");
+    audio.play();
+}
+function playfire() {
+    let audio = document.getElementById("fire");
+    audio.play();
+}
 
 
 let compguess=()=>{
@@ -23,7 +37,7 @@ let find=()=>{
     let curr=-1;
     let len=stack.length;
     let add=0;
-    console.log(stack,stack.length,len);
+   
     if (len==0){
         if (canbe.length!=0){
             stack=[canbe[canbe.length-1]]
@@ -70,7 +84,7 @@ let find=()=>{
                         if(vis[map[candidate]]==0){
                             stack.push(candidate);
                             add=1;
-                            console.log(stack);
+                           
                             curr=userGrid.children[map[candidate]];
                             break;
                         }
@@ -79,7 +93,7 @@ let find=()=>{
 
                 }
                 else{
-                    console.log(candidate,vis[map[candidate]]);
+                
                     stack.push(candidate);
                     add=1;
                     curr=userGrid.children[map[candidate]];
@@ -93,7 +107,7 @@ let find=()=>{
                 if (e==1){
                     for(let j=0;j<len;j++){
                         candidate=[stack[j][0],Math.max(1,stack[j][1]-1)];
-                        console.log(candidate);
+                       
                         if(vis[map[candidate]]==0){
                             stack.push(candidate);
                             add=1;
@@ -105,7 +119,7 @@ let find=()=>{
 
                 }
                 else{
-                    console.log(candidate,vis[map[candidate]]);
+                   
                     stack.push(candidate);
                     add=1;
                     curr=userGrid.children[map[candidate]];
@@ -137,7 +151,7 @@ let find=()=>{
         }
 
     }
- 
+   
     check(curr);
 
 
@@ -147,7 +161,7 @@ let find=()=>{
 
 function check(Child){
 
-    if (Child.innerHTML==""){
+    if (Child.value!="" & (!usership.lost())){
         let cell=Child.value;
         let ind=map[cell];
         vis[ind]=1;
@@ -155,6 +169,7 @@ function check(Child){
    
         
         for(let i=0;i<5;i++){
+
             if (usership.ships[i].belongs(cell)!=-1){
                 usership.ships[i].delete(usership.ships[i].belongs(cell));
                
@@ -167,21 +182,53 @@ function check(Child){
 
                     }
                     stack=[];
+                   
+                    Child.value="";
+                    let img=document.createElement('img');
+                    img.classList.add("answer");
+                    img.src="images/check.ico"
+                    Child.appendChild(img);
+                    result.innerHTML=`The enemy fires a shot into your waters  and they sunk your  ${usership.ships[i].type}`;
+                    playhit();
+                    if(usership.lost()){
+                        alert("WINNER Computer");
+                        result.innerHTML='Computer Won Try Again';
+                        playAgain.style.display="block";
+
+                        
+                        return;
+                    }
+                    return;
                 }
+              
+                Child.value="";
+                let img=document.createElement('img');
+                img.classList.add("answer");
+                img.src="images/check.ico"
+                Child.appendChild(img);
                 
-                Child.style.backgroundColor=usership.ships[i].color;
-                Child.innerHTML="R";
-                
+                result.innerHTML="The enemy fires a shot into your waters ...... it's a hit!";
+                playhit();
+               
+               
                 
                 if(usership.lost()){
-                    alert("WINNER Computer")
+                    alert("WINNER Computer");
+                    playAgain.style.display="block";
                 }
                 return;
             }
 
         }
         Child.style.backgroundColor="black";
-        Child.innerHTML="W";
+        let img=document.createElement('img');
+        img.classList.add("answer");
+        img.src="images/wrong.jpg"
+        Child.appendChild(img);
+        Child.value="";
+     
+        result.innerHTML="The enemy fires a shot into your waters ...... and misses.";
+        playmiss();
         let temp=poss.indexOf(map[stack[stack.length-1]]);
         poss.splice(temp,1);
        

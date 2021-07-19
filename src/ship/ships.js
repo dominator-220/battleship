@@ -1,9 +1,10 @@
-function ship(type,length,cells,color){
+function ship(type,length,cells,color,src){
     this.type=type;
     this.length=length;
     this.cells=cells;
-    this.grids=cells;
+    this.grids=[];
     this.color=color;
+    this.src=src;
     this.Sunk=()=>{
         if (this.length==0){
             return 1
@@ -25,6 +26,7 @@ function ship(type,length,cells,color){
     }
 
     this.delete=(pos)=>{
+        this.grids.push(this.cells[pos]);
         this.cells.splice(pos,1);
         this.length+=-1;
 
