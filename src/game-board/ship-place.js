@@ -1,9 +1,9 @@
 
-let placeShip=(start,length,direction,grid,color)=>
+let placeShip=(start,length,direction,grid,color,link)=>
 {   
     if (check(start,length,direction,grid)){
     
-        let cells=putShip(start,length,direction,grid,color)
+        let cells=putShip(start,length,direction,grid,color,link)
         return cells
         
 
@@ -11,13 +11,18 @@ let placeShip=(start,length,direction,grid,color)=>
     return -1;
 }
 
-function putShip(start,length,direction,grid,color){
+function putShip(start,length,direction,grid,color,link){
     let total=length;
     let curr=(start[0]-1)*10+(start[1]-1);
     let cells=[];
     if (direction==0){
         while(total>0){
             grid[curr].style.backgroundColor=color;
+            let img=document.createElement('img');
+            img.classList.add("imgstyle");
+            img.src=link;
+            grid[curr].appendChild(img);
+           
             cells.push([Math.floor(curr/10)+1,(curr%10)+1]);
             total+=-1;
             curr+=1;
@@ -31,6 +36,12 @@ function putShip(start,length,direction,grid,color){
     else{
         while(total>0){
             grid[curr].style.backgroundColor=color;
+            
+            let img=document.createElement('img');
+            img.classList.add("imgstyle");
+            img.src=link;
+
+            grid[curr].appendChild(img);
             cells.push([Math.floor(curr/10)+1,(curr%10)+1]);
             total+=-1;
             curr+=10;
